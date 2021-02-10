@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="&lt;context: load-time-weaver/&gt; 标签解析器： org.springframework.context.config.LoadTimeWeaverBeanDefinitionParser , @since 2.5
+主要功能 在Java 语言中，从织入切面的方式上来看，存在三种织入方式：编译期织入、类加载期织入 和 运行期织入。
+ 编译期织入 是指在Java编译期，采用特殊的编译器，将切面织入到Java类中 类加载期织入 则指通过 特殊的类加载器 或 javaagent 机制，在类字节码加载到JVM时，织入切面 运行期织入 则是采用CGLib工具或JDK动态代理进行切面的织入。  load-time-weaver 就是 采用 类加载期织入 的方式。
+ 如果程序运行在 Web 容器中，可能是通过 Web 容器 ClassLoader 对外提供的接口，在类加载到内存的时候修改类的字节码文件 如果 是在 Spring 没有支持 的 LTW Web 容器中、或者非 Web 容器，可以通过 Spring 提供 Agent spring-instrument 通过 -javaagent 的方式启动来支持 类加载期织入 还可以通过 指定自定义的 ClassLoader 在获取类字节码的时候 织入 代码。  使用方式 &lt;context:load-time-weaver aspectj-weaving=&#34;on|off|autodetect&#34; weaver-class=&#34;默认：org.springframework.context.weaving.DefaultContextLoadTimeWeaver&#34; /&gt; LoadTimeWeaverBeanDefinitionParser.doParse 伪代码 if( aspectj-weaving == on || (aspectj-weaving == autodetect &amp;&amp; exist(&#34;META-INF/aop."><meta property="og:title" content="" />
+<meta property="og:description" content="&lt;context: load-time-weaver/&gt; 标签解析器： org.springframework.context.config.LoadTimeWeaverBeanDefinitionParser , @since 2.5
+主要功能 在Java 语言中，从织入切面的方式上来看，存在三种织入方式：编译期织入、类加载期织入 和 运行期织入。
+ 编译期织入 是指在Java编译期，采用特殊的编译器，将切面织入到Java类中 类加载期织入 则指通过 特殊的类加载器 或 javaagent 机制，在类字节码加载到JVM时，织入切面 运行期织入 则是采用CGLib工具或JDK动态代理进行切面的织入。  load-time-weaver 就是 采用 类加载期织入 的方式。
+ 如果程序运行在 Web 容器中，可能是通过 Web 容器 ClassLoader 对外提供的接口，在类加载到内存的时候修改类的字节码文件 如果 是在 Spring 没有支持 的 LTW Web 容器中、或者非 Web 容器，可以通过 Spring 提供 Agent spring-instrument 通过 -javaagent 的方式启动来支持 类加载期织入 还可以通过 指定自定义的 ClassLoader 在获取类字节码的时候 织入 代码。  使用方式 &lt;context:load-time-weaver aspectj-weaving=&#34;on|off|autodetect&#34; weaver-class=&#34;默认：org.springframework.context.weaving.DefaultContextLoadTimeWeaver&#34; /&gt; LoadTimeWeaverBeanDefinitionParser.doParse 伪代码 if( aspectj-weaving == on || (aspectj-weaving == autodetect &amp;&amp; exist(&#34;META-INF/aop." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver/" />
+
+<title>Load Time Weaver | Spring-Context</title>
+<link rel="icon" href="/Spring-Context/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Context/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Context"><span>Spring-Context</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li>
+  <a href="/Spring-Context/docs/spring-context/ConfigurableApplicationContext/">ConfigurableApplicationContext🍃</a></li>
+</ul>
+<ul>
+<li><strong>Handlers</strong>
+<ul>
+<li><strong>ContextNamespaceHandler</strong>
+<ul>
+<li>
+  <a href="/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/component-scan/">_&lt;context:component-scan/&gt;</a></li>
+<li>
+  <a href="/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver/"class=active>&lt;context:load-time-weaver/&gt;</a></li>
+<li>
+  <a href="/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/spring-configured/">&lt;context:spring-configured/&gt;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Context/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Load Time Weaver</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Context/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ltcontext-load-time-weavergt">&lt;context: load-time-weaver/&gt;</a>
+      <ul>
+        <li><a href="#主要功能">主要功能</a></li>
+        <li><a href="#使用方式">使用方式</a></li>
+        <li><a href="#loadtimeweaverbeandefinitionparserdoparse-伪代码">LoadTimeWeaverBeanDefinitionParser.doParse 伪代码</a></li>
+        <li><a href="#defaultcontextloadtimeweaver">DefaultContextLoadTimeWeaver</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="ltcontext-load-time-weavergt">&lt;context: load-time-weaver/&gt;</h1>
+<p>标签解析器： <code>org.springframework.context.config.LoadTimeWeaverBeanDefinitionParser</code> , @since 2.5</p>
+<h2 id="主要功能">主要功能</h2>
+<p>在Java 语言中，从织入切面的方式上来看，存在三种织入方式：编译期织入、类加载期织入 和 运行期织入。</p>
+<ul>
+<li><strong>编译期织入</strong> 是指在Java编译期，采用特殊的编译器，将切面织入到Java类中</li>
+<li><strong>类加载期织入</strong> 则指通过 <strong>特殊的类加载器</strong> 或 <strong>javaagent 机制</strong>，在类字节码加载到JVM时，织入切面</li>
+<li><strong>运行期织入</strong> 则是采用CGLib工具或JDK动态代理进行切面的织入。</li>
+</ul>
+<p>load-time-weaver 就是 采用 <strong>类加载期织入</strong> 的方式。</p>
+<ul>
+<li>如果程序运行在 Web 容器中，可能是通过 Web 容器 ClassLoader 对外提供的接口，在类加载到内存的时候修改类的字节码文件</li>
+<li>如果 是在 Spring 没有支持 的 LTW Web 容器中、或者非 Web 容器，可以通过 Spring 提供 Agent <code>spring-instrument</code> 通过 <code>-javaagent</code> 的方式启动来支持 <strong>类加载期织入</strong></li>
+<li>还可以通过 指定自定义的 ClassLoader 在获取类字节码的时候 织入 代码。</li>
+</ul>
+<h2 id="使用方式">使用方式</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;context:load-time-weaver</span> 
+        <span style="color:#a6e22e">aspectj-weaving=</span><span style="color:#e6db74">&#34;on|off|autodetect&#34;</span> 
+        <span style="color:#a6e22e">weaver-class=</span><span style="color:#e6db74">&#34;默认：org.springframework.context.weaving.DefaultContextLoadTimeWeaver&#34;</span>
+<span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="loadtimeweaverbeandefinitionparserdoparse-伪代码">LoadTimeWeaverBeanDefinitionParser.doParse 伪代码</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> aspectj<span style="color:#f92672">-</span>weaving <span style="color:#f92672">==</span> on <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>aspectj<span style="color:#f92672">-</span>weaving <span style="color:#f92672">==</span> autodetect <span style="color:#f92672">&amp;&amp;</span> exist<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;META-INF/aop.xml&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">){</span>
+    <span style="color:#75715e">// internalAspectJWeavingEnabler，需要 org.aspectj:aspectjweaver 依赖
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;org.springframework.context.config.internalAspectJWeavingEnabler&#34;</span> 还没有注册过 <span style="color:#f92672">){</span>
+        注册 <span style="color:#e6db74">&#34;org.springframework.context.weaving.AspectJWeavingEnabler&#34;</span>
+        名字 <span style="color:#e6db74">&#34;org.springframework.context.config.internalAspectJWeavingEnabler&#34;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#75715e">// 同 &lt;context:spring-configured/&gt;，需要 org.springframework:spring-aspects 依赖，间接依赖 org.aspectj:aspectjweaver
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect&#34;</span> 有这个类<span style="color:#f92672">){</span>
+        <span style="color:#75715e">// internalBeanConfigurerAspect
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> <span style="color:#e6db74">&#34;org.springframework.context.config.internalBeanConfigurerAspect&#34;</span> 还没有注册过 <span style="color:#f92672">){</span>
+            注册 <span style="color:#e6db74">&#34;org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect&#34;</span>
+            名字 <span style="color:#e6db74">&#34;org.springframework.context.config.internalBeanConfigurerAspect&#34;</span>
+  		<span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="defaultcontextloadtimeweaver">DefaultContextLoadTimeWeaver</h2>
+<p><code>DefaultContextLoadTimeWeaver</code> 是 <code>LoadTimeWeaver</code> 接口各种实现 的适配器。</p>
+<p><strong>LoadTimeWeaver 实现 适配过程 伪代码</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">LoadTimeWeaver serverSpecificLoadTimeWeaver <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    获取 Web 容器 相关的 LoadTimeWeaver<span style="color:#960050;background-color:#1e0010">，</span>从 Spring 4<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span> 开始<span style="color:#960050;background-color:#1e0010">，</span>支持<span style="color:#960050;background-color:#1e0010">：</span>
+        Oracle WebLogic 10
+        GlassFish 3
+        Tomcat 6<span style="color:#f92672">,</span> 7 and 8
+        JBoss AS 5<span style="color:#f92672">,</span> 6 and 7
+        IBM WebSphere 7 and 8
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span> <span style="color:#f92672">!=</span> serverSpecificLoadTimeWeaver<span style="color:#f92672">){</span>
+    <span style="color:#75715e">// 部分 Web 容器，支持 LTW
+</span><span style="color:#75715e"></span>    使用 Web 容器 相关的 LoadTimeWeaver
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> 是否已 <span style="color:#f92672">-</span>javaagent<span style="color:#f92672">:</span>spring<span style="color:#f92672">-</span>instrument<span style="color:#f92672">.</span><span style="color:#a6e22e">jar</span> 启动 <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 传统的 javaagent 的方式 修改字节码
+</span><span style="color:#75715e"></span>    使用 InstrumentationLoadTimeWeaver
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 通过反射自定义 ClassLoader， 在 ClassLoader 加载类的时候，可以获取字节码 进行修改
+</span><span style="color:#75715e"></span>    使用 <span style="color:#a6e22e">ReflectiveLoadTimeWeaver</span><span style="color:#f92672">(</span>自定义 ClassLoader <span style="color:#960050;background-color:#1e0010">，</span> 如 SimpleInstrumentableClassLoader <span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>ClassLoader (java.lang)
+<ul>
+<li>DecoratingClassLoader (org.springframework.core)
+<ul>
+<li>OverridingClassLoader (org.springframework.core)
+<ul>
+<li>SimpleInstrumentableClassLoader (org.springframework.instrument.classloading)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>
+<p>
+  <a href="http://www.eclipse.org/aspectj/doc/released/devguide/ltw.html">Chapter 5. Load-Time Weaving</a></p>
+</li>
+<li>
+<p>
+  <a href="http://shouce.jb51.net/spring/aop.html#aop-aj-ltw">6.8.4. 在Spring应用中使用AspectJ加载时织入（LTW）</a></p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Context/edit/master/HuGo/content/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver.md" target="_blank" rel="noopener">
+      <img src="/Spring-Context/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ltcontext-load-time-weavergt">&lt;context: load-time-weaver/&gt;</a>
+      <ul>
+        <li><a href="#主要功能">主要功能</a></li>
+        <li><a href="#使用方式">使用方式</a></li>
+        <li><a href="#loadtimeweaverbeandefinitionparserdoparse-伪代码">LoadTimeWeaverBeanDefinitionParser.doParse 伪代码</a></li>
+        <li><a href="#defaultcontextloadtimeweaver">DefaultContextLoadTimeWeaver</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

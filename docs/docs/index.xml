@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on Template-Hugo</title>
-    <link>https://hello-world-example.github.io/Template-Hugo/docs/</link>
-    <description>Recent content in Docs on Template-Hugo</description>
+    <title>Docs on Spring-Context</title>
+    <link>https://hello-world-example.github.io/Spring-Context/docs/</link>
+    <description>Recent content in Docs on Spring-Context</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://hello-world-example.github.io/Template-Hugo/docs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hello-world-example.github.io/Spring-Context/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ConfigurationClassUtils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ConfigurationClassUtils/</guid>
+      <description>.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ImportBeanDefinitionRegistrar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ImportBeanDefinitionRegistrar/</guid>
+      <description>.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ImportSelector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/__ImportSelector/</guid>
+      <description>.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/ConfigurableApplicationContext/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/ConfigurableApplicationContext/</guid>
+      <description>ConfigurableApplicationContext.refresh 继承关系  ConfigurableApplicationContext (org.springframework.context)  ApplicationContext (org.springframework.context)  EnvironmentCapable (org.springframework.core.env) ListableBeanFactory (org.springframework.beans.factory)  BeanFactory (org.springframework.beans.factory)   HierarchicalBeanFactory (org.springframework.beans.factory)  BeanFactory (org.springframework.beans.factory)   MessageSource (org.springframework.context) ApplicationEventPublisher (org.springframework.context) ResourcePatternResolver (org.springframework.core.io.support)  ResourceLoader (org.springframework.core.io)     Lifecycle (org.springframework.context) Closeable (java.io)  AutoCloseable (java.lang)      实现关系  ConfigurableApplicationContext (org.springframework.context)  .. AbstractApplicationContext (org.springframework.context.support)  GenericApplicationContext (org.springframework.context.support)  GenericXmlApplicationContext (org.springframework.context.support) StaticApplicationContext (org.springframework.context.support) GenericWebApplicationContext (org.springframework.web.context.support) AnnotationConfigApplicationContext (org.springframework.context.annotation)  .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/CacheNamespaceHandler/noting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/CacheNamespaceHandler/noting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/component-scan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/component-scan/</guid>
+      <description>&amp;lt;context: component-scan&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver/</guid>
+      <description>&amp;lt;context: load-time-weaver/&amp;gt; 标签解析器： org.springframework.context.config.LoadTimeWeaverBeanDefinitionParser , @since 2.5
+主要功能 在Java 语言中，从织入切面的方式上来看，存在三种织入方式：编译期织入、类加载期织入 和 运行期织入。
+ 编译期织入 是指在Java编译期，采用特殊的编译器，将切面织入到Java类中 类加载期织入 则指通过 特殊的类加载器 或 javaagent 机制，在类字节码加载到JVM时，织入切面 运行期织入 则是采用CGLib工具或JDK动态代理进行切面的织入。  load-time-weaver 就是 采用 类加载期织入 的方式。
+ 如果程序运行在 Web 容器中，可能是通过 Web 容器 ClassLoader 对外提供的接口，在类加载到内存的时候修改类的字节码文件 如果 是在 Spring 没有支持 的 LTW Web 容器中、或者非 Web 容器，可以通过 Spring 提供 Agent spring-instrument 通过 -javaagent 的方式启动来支持 类加载期织入 还可以通过 指定自定义的 ClassLoader 在获取类字节码的时候 织入 代码。  使用方式 &amp;lt;context:load-time-weaver aspectj-weaving=&amp;#34;on|off|autodetect&amp;#34; weaver-class=&amp;#34;默认：org.springframework.context.weaving.DefaultContextLoadTimeWeaver&amp;#34; /&amp;gt; LoadTimeWeaverBeanDefinitionParser.doParse 伪代码 if( aspectj-weaving == on || (aspectj-weaving == autodetect &amp;amp;&amp;amp; exist(&amp;#34;META-INF/aop.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/spring-configured/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/spring-configured/</guid>
+      <description>&amp;lt;context: spring-configured/&amp;gt; &amp;lt;context:spring-configured/&amp;gt; 等同于 &amp;lt;aop:spring-configured/&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/JeeNamespaceHandler/noting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/JeeNamespaceHandler/noting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/LangNamespaceHandler/noting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/LangNamespaceHandler/noting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/TaskNamespaceHandler/noting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/TaskNamespaceHandler/noting/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

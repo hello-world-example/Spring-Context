@@ -1,0 +1,1 @@
+# &lt;context: component-scan&gt;
