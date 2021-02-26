@@ -12,6 +12,8 @@
     <modules>
         <module>demo-spring-context-common</module>
         <module>demo-spring-context-event</module>
+        <!---->
+        <module>demo-spring-draw</module>
     </modules>
 
     <properties>
@@ -41,15 +43,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
     </dependencies>
 
 
