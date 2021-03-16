@@ -14,7 +14,7 @@
  如果程序运行在 Web 容器中，可能是通过 Web 容器 ClassLoader 对外提供的接口，在类加载到内存的时候修改类的字节码文件 如果 是在 Spring 没有支持 的 LTW Web 容器中、或者非 Web 容器，可以通过 Spring 提供 Agent spring-instrument 通过 -javaagent 的方式启动来支持 类加载期织入 还可以通过 指定自定义的 ClassLoader 在获取类字节码的时候 织入 代码。  使用方式 &lt;context:load-time-weaver aspectj-weaving=&#34;on|off|autodetect&#34; weaver-class=&#34;默认：org.springframework.context.weaving.DefaultContextLoadTimeWeaver&#34; /&gt; LoadTimeWeaverBeanDefinitionParser.doParse 伪代码 if( aspectj-weaving == on || (aspectj-weaving == autodetect &amp;&amp; exist(&#34;META-INF/aop." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Spring-Context/docs/spring-context/handlers/ContextNamespaceHandler/load-time-weaver/" />
-
+<meta property="article:modified_time" content="2021-02-10T11:02:45+08:00" />
 <title>Load Time Weaver | Spring-Context</title>
 <link rel="icon" href="/Spring-Context/favicon.png" type="image/x-icon">
 
@@ -228,6 +228,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Context/commit/a174fe779b22eb663e0e776b36a49dd9abc195be" title='Last modified by kaibin.yang | Feb 10, 2021' target="_blank" rel="noopener">
+      <img src="/Spring-Context/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Feb 10, 2021</span>
+    </a>
+  </div>
 
 
 
